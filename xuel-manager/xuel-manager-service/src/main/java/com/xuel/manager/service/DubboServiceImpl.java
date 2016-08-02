@@ -16,7 +16,7 @@ public class DubboServiceImpl implements DubboService {
 	@Override
 	public List show() {
 		UserExample example = new UserExample();
-		example.createCriteria().andUsernameLike("xiaohui");
+		example.createCriteria().andUsernameLike("%xiaohui%");
 		List<User> list = userMapper.selectByExample(example);
 		return list;
 	}
