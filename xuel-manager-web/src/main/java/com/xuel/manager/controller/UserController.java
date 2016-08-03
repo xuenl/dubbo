@@ -54,7 +54,7 @@ Easyui要求的json数据格式。{total:100,rows:[{},{}]}
 		//向模型和视图中添加数据用户返回给页面
 		modelAndView.addObject("userList", userList);
 		
-		modelAndView.setViewName("userlist");
+		modelAndView.setViewName("user/userlist");
 		
 		return modelAndView;
 	}
