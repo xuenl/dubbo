@@ -17,11 +17,11 @@
 	<mvc:annotation-driven/>
 	
 	<!-- 配置视图解析器 -->
-	<bean
+	<!-- <bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/jsp/" />
 		<property name="suffix" value=".jsp" />
-	</bean>
+	</bean> -->
 	
 	<!-- 配置静态资源拦截规则 -->
 	<mvc:resources location="/js/" mapping="/js/**"/>
@@ -35,6 +35,26 @@
 		<!-- 设定文件上传的最大值5MB，5*1024*1024 -->
 		<property name="maxUploadSize" value="5242880"></property>
 	</bean>
+	
+	<!-- velocity -->
+	<!--规定模板文件的类型和位置-->
+    <bean id="velocityConfigurer"
+        class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+        <property name="resourceLoaderPath" value="/WEB-INF/templates/" />
+        <property name="velocityProperties">
+            <props>
+                <prop key="input.encoding">utf-8</prop>
+                <prop key="output.encoding">utf-8</prop>
+            </props>
+        </property>
+    </bean>
+    <!--配置附加工具，以及将后缀为vm的文件交给下面的Resolver处理-->
+    <bean id="velocityViewResolver"
+        class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+        <property name="suffix" value=".vm" />
+        <property name="contentType" value="text/html;charset=utf-8" />
+        <property name="toolboxConfigLocation" value="/WEB-INF/toolbox.xml"/>
+    </bean>
 	
 
 </beans>
