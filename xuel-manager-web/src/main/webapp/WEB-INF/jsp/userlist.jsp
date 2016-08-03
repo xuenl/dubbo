@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE>
 <html>
 <head>
@@ -14,7 +15,7 @@
 	<td>性别</td>
 	<td>操作</td>
 </tr>
-<c:forEach user="${userList }" var="user">
+<c:forEach items="${userList }" var="user">
 <tr>
 	<td>${user.username }</td>
 	<td>${user.password }</td>

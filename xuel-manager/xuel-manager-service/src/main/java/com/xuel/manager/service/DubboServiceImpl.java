@@ -62,7 +62,7 @@ public class DubboServiceImpl implements DubboService {
 		UserExample example = new UserExample();
 		//执行statement
 		List<User> list = userMapper.selectByExample(example);
-		return null;
+		return list;
 	}
 
 }
