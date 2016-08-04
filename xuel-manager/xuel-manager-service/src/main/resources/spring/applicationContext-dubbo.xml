@@ -21,4 +21,6 @@
 	
 	<!-- 发布服务 -->
 	<dubbo:service interface="com.xuel.manager.service.DubboService" ref="dubboServiceImpl" timeout="600000"/>
+	<dubbo:service interface="com.xuel.manager.service.NetEaseNewsService" ref="netEaseNewsServiceImpl" timeout="600000"/>
+	
 </beans>

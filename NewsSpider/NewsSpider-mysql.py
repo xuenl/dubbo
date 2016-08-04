@@ -10,13 +10,13 @@ import MySQLdb
 def StringListSave(slist):
    # 打开数据库连接
     db = MySQLdb.connect("localhost","root","1234","dubbo",charset="utf8")
-    # 使用cursor()方法获取操作游标 
+    # 使用cursor()方法获取操作游标
     cursor = db.cursor()
     # SQL 插入语句
     try:
         for s in slist:
             sql =  "INSERT INTO netEaseNews(title, url) VALUES ('" + s[0].encode("utf8") + "','" + s[1].encode("utf8") +"');"
-            print sql
+            # print sql
             cursor.execute(sql)
             # 提交到数据库执行
             db.commit()

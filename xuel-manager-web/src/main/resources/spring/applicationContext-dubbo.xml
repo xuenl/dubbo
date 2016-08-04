@@ -19,5 +19,7 @@
 	<!-- 引用服务 -->
 	<dubbo:reference interface="com.xuel.manager.service.DubboService"
 		id="dubboService" />
+	<dubbo:reference interface="com.xuel.manager.service.NetEaseNewsService"
+		id="netEaseNewsService" />
 
 </beans>

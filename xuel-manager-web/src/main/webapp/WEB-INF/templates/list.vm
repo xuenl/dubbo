@@ -1,0 +1,68 @@
+<!DOCTYPE>
+<html lang="zh-CN">
+<head>
+ 	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>网易新闻排行榜</title>
+	 <!-- Bootstrap -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+		 <h1>网易新闻列表：</h1>
+		 <div class="table-responsive">
+			<table class="table table-hover table-bordered table- table-condensed">
+					<thead>
+		                <tr>
+							<th>序号</th>
+		                    <th>新问题目</th>
+		                    <th>URL</th>
+		                </tr>
+		            </thead>
+		            <tbody>
+						#foreach($item in $list)
+						<tr>
+							<td>$!velocityCount</td>
+							<td>$!item.title</td>
+							<td><a href="$!item.url" target="_blank">$!item.url</a></td>
+						</tr>
+						#end
+					</tbody>
+			</table>
+		</div>
+		<div>
+    		<ul class="pagination">
+    			  <li><a href="/netEaseNews/list?page=1">&laquo;&laquo;</a></li>
+    			  <li><a href="/netEaseNews/list?page=$!prevPage">&laquo;</a></li>
+    			  #set($pageNum=[ 1..$total ])
+    			  #foreach($i in $pageRange)
+    			  	<li #if($i==$page) class="active" #end>
+							<a href="/netEaseNews/list?page=$!i">$!i</a>
+    			  	</li>
+    			  #end
+    			  <li><a href="/netEaseNews/list?page=$!afterPage">&raquo;</a></li>
+    			  <li><a href="/netEaseNews/list?page=$!total">&raquo;&laquo;</a></li>
+    		</ul>
+			<div class="text-right"><strong>共$total 页数据，当前第$page 页。跳转到
+            <input type="search" class="small" id="s" value="$page"/> 页 </strong><button class="btn" id="go">Go
+            </button></div>
+		</div>
+	</div>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+	<script >
+	jQuery(function(){
+    	jQuery("#go").click(function(){
+    		var page = jQuery("#s").val()?jQuery("#s").val():"1";
+			if(isNaN(page) || page <=0 || page > $total){
+				alert("请输入正确数字");
+				return false;
+			}
+    		window.location="/netEaseNews/list?page=" + page;
+    	});
+	});
+    </script>
+</body>
+</html>
